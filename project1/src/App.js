@@ -1,17 +1,27 @@
+import React,{useState} from "react";
 import Expenses from "./components/expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 
 function App() {
-  const expenses = [
+  const DUMMY_EXPENSES = [
     { id: "e1", title: "Toilet Paper", amount: 94.12, date: new Date(2020, 7, 14),},
     { id: "e2", title: "New TV", amount: 799.49, date: new Date(2021, 2, 12) },
     { id: "e3", title: "Car Insurance", amount: 294.67, date: new Date(2021, 2, 28),},
     { id: "e4", title: "New Desk (Wooden)", amount: 450, date: new Date(2022, 5, 12),}
   ];
-  // expenseDate 는 객체이기 때문에 .toISOString()를 해줘야 한다. (알아보기)
+
+  const[expenses,setExpenses] = useState(DUMMY_EXPENSES);
+  
+
+  const addExpenseHandler = expense => {
+    // setExpenses([...expenses,expense]);
+    setExpenses(prevExpense => { //위의 방법도 가능하지만 setExpenses는 기본적으로 함수로 생성되고 기존의 값을 가지고 있다 매개변수로 이 전 상태의 expenses를 매개변수로 가져올 수 있다.
+      return [expense,...prevExpense];
+    });
+  }
   return (
     <div>
-      <NewExpense/>
+      <NewExpense onAddExpense = {addExpenseHandler}/>
       {/* 
       <ExpenseItem title={expenses[0].title} amount={expenses[0].amount} date={expenses[0].date}/>
       <ExpenseItem title={expenses[1].title} amount={expenses[1].amount} date={expenses[1].date}/>
@@ -30,14 +40,6 @@ function App() {
     </div>
   );
 }
-/*
-  component tree
-  <app/>
-  <header/><tasks/>
-  ~~~~~
-  
-  가장 상위에 있는 컴포넌트만이 리액트 돔이 index.html 에 직접 랜더링이 된다.
-  
-*/
+
 
 export default App;
