@@ -19,6 +19,7 @@ const ExpenseForm = (props) => {
         prevState를 전개연산자로 불러와서 기존 값을 복사 후 변화된 값을 적용 
     */
         setEnteredTitle(ev.target.value);
+        console.log(ev.target.value);
     }
     const amountChangeHandler = ev => {
         setEnteredAmount(ev.target.value);
