@@ -19,7 +19,6 @@ const ExpenseForm = (props) => {
         prevState를 전개연산자로 불러와서 기존 값을 복사 후 변화된 값을 적용 
     */
         setEnteredTitle(ev.target.value);
-        console.log(ev.target.value);
     }
     const amountChangeHandler = ev => {
         setEnteredAmount(ev.target.value);
@@ -58,13 +57,14 @@ const ExpenseForm = (props) => {
                 <div className="new-expense__control">
                     <label>가격</label>
                     <input type="number" min="1" step="1" value={enteredAmount} onInput={amountChangeHandler}/>
-                </div>                <div className="new-expense__control">
+                </div>                
+                <div className="new-expense__control">
                     <label>날짜</label>
                     <input type="date" min="2019-01-01" step="2022-12-31" value={enteredDate} onInput={dateChangeHandler} />
                 </div>
             </div>
             <div className="new-expense__actions">
-                <button type="button" onClick = {props.onCancel}>Cancel</button>
+                <button type="button">Cancel</button>
                 <button type="submit">완료</button>
             </div>
         </form>

@@ -12,7 +12,6 @@ function App() {
 
   const[expenses,setExpenses] = useState(DUMMY_EXPENSES);
   
-
   const addExpenseHandler = expense => {
     // setExpenses([...expenses,expense]);
     setExpenses(prevExpense => { //위의 방법도 가능하지만 setExpenses는 기본적으로 함수로 생성되고 기존의 값을 가지고 있다 매개변수로 이 전 상태의 expenses를 매개변수로 가져올 수 있다.
